@@ -2,6 +2,8 @@ package com.saurabh.propertymanagement.entity;
 
 import com.saurabh.propertymanagement.dto.UserDTO;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -19,8 +21,11 @@ public class UserEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String ownerName;
+    @NotNull(message = "Owner email should be mandatory.")
     @Column(nullable = false, unique = true)
     private String ownerEmail;
+    @NotNull( message = "Password cannot be null.")
+    @NotEmpty(message =  "Password cannot be empty.")
     private String password;
     private String phone;
 
@@ -36,7 +41,6 @@ public class UserEntity {
         UserDTO userDTO = new UserDTO();
         userDTO.setOwnerName(ownerName);
         userDTO.setOwnerEmail(ownerEmail);
-//        userDTO.setPassword(password);
         userDTO.setPhone(phone);
         userDTO.setId(id);
         return userDTO;
