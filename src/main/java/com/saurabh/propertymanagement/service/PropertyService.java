@@ -1,7 +1,6 @@
 package com.saurabh.propertymanagement.service;
 
 import com.saurabh.propertymanagement.dto.PropertyDTO;
-import org.springframework.http.HttpStatusCode;
 
 import java.util.List;
 

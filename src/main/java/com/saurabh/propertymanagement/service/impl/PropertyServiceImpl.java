@@ -13,9 +13,11 @@ import java.util.Optional;
 
 @Service
 public class PropertyServiceImpl implements PropertyService {
-
+    PropertyRepository propertyRepository;
     @Autowired
-    private PropertyRepository propertyRepository;
+    public PropertyServiceImpl(PropertyRepository propertyRepository) {
+        this.propertyRepository = propertyRepository;
+    }
     @Override
     public PropertyDTO saveProperty(PropertyDTO propertyDTO) {
         return propertyRepository.save(new PropertyEntity(propertyDTO)).toDTO();
@@ -35,7 +37,6 @@ public class PropertyServiceImpl implements PropertyService {
     @Override
     public PropertyDTO updateProperty(PropertyDTO propertyDTO, Long id) {
         Optional<PropertyEntity> propertyEntity = propertyRepository.findById(id);
-        System.out.println(propertyEntity);
         if (propertyEntity.isPresent()) {
             PropertyEntity propertyEntity1 = propertyEntity.get();
             propertyEntity1.setPrice( propertyDTO.getPrice());
@@ -50,7 +51,6 @@ public class PropertyServiceImpl implements PropertyService {
     @Override
     public PropertyDTO patchProperty(PropertyDTO propertyDTO, Long id) {
         Optional<PropertyEntity> propertyEntity = propertyRepository.findById(id);
-        System.out.println(propertyEntity);
         if (propertyEntity.isPresent()) {
 
             PropertyEntity propertyEntity1 = propertyEntity.get();
