@@ -20,8 +20,6 @@ public class PropertyEntity {
     public PropertyEntity(PropertyDTO propertyDTO) {
         this.title = propertyDTO.getTitle();
         this.description = propertyDTO.getDescription();
-        this.ownerEmail = propertyDTO.getOwnerEmail();
-        this.ownerName = propertyDTO.getOwnerName();
         this.address = propertyDTO.getAddress();
         this.price = propertyDTO.getPrice();
     }
@@ -32,8 +30,6 @@ public class PropertyEntity {
     @Column(name = "PROPERTY_TITLE", nullable = false)
     private String title;
     private String description;
-    private String ownerName;
-    private String ownerEmail;
     private double price;
     private String address;
 
@@ -43,8 +39,6 @@ public class PropertyEntity {
         propertyDTO.setDescription(this.description);
         propertyDTO.setAddress(this.address);
         propertyDTO.setPrice(this.price);
-        propertyDTO.setOwnerEmail(this.ownerEmail);
-        propertyDTO.setOwnerName(this.ownerName);
         propertyDTO.setId(this.id);
         return propertyDTO;
     }

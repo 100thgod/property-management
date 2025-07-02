@@ -5,7 +5,6 @@ import com.saurabh.propertymanagement.entity.PropertyEntity;
 import com.saurabh.propertymanagement.repository.PropertyRepository;
 import com.saurabh.propertymanagement.service.PropertyService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -43,8 +42,6 @@ public class PropertyServiceImpl implements PropertyService {
             propertyEntity1.setDescription(propertyDTO.getDescription());
             propertyEntity1.setAddress(propertyDTO.getAddress());
             propertyEntity1.setTitle(propertyDTO.getTitle());
-            propertyEntity1.setOwnerEmail(propertyDTO.getOwnerEmail());
-            propertyEntity1.setOwnerName(propertyDTO.getOwnerName());
             return propertyRepository.save(propertyEntity1).toDTO();
         }
         return null;
@@ -68,12 +65,6 @@ public class PropertyServiceImpl implements PropertyService {
             }
             if (propertyDTO.getTitle()!= null) {
                 propertyEntity1.setTitle(propertyDTO.getTitle());
-            }
-            if (propertyDTO.getOwnerEmail()!= null) {
-                propertyEntity1.setOwnerEmail(propertyDTO.getOwnerEmail());
-            }
-            if (propertyDTO.getOwnerName()!= null) {
-                propertyEntity1.setOwnerName(propertyDTO.getOwnerName());
             }
             return propertyRepository.save(propertyEntity1).toDTO();
         }
